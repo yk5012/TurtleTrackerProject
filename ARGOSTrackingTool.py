@@ -22,7 +22,7 @@ line_list = file_object.readlines()
 file_object.close()
 
 #Pretend we read one line of data from the file
-for lineString in line_list: 
+for lineString in line_list: # instead of using if, can also do line_list[17:] to read only from line 18
     #Check if line is a data line
     if lineString[0] in ("#", "u"): # if start of line(index 0) has # or u, skip 
         continue 
