@@ -39,6 +39,6 @@ while lineString:    #This is a boolean that will be True if line has content, F
     #Print the location of sara
     print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
 
-    #Read next line - you need this to avoid infinite loop
+    #Read next line 
     lineString = file_object.readline()
 
