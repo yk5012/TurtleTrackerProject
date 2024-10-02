@@ -13,17 +13,18 @@
 file_name = './data/raw/sara.txt' # . indicates start from current python file
 
 #Create a file object from the file
-file_object = open(file_name,'r') # we can't close this because need to go back to file for each line
+file_object = open(file_name,'r')
 
-#Read one line of file into a list 
-#Smaller memory footprint than reading the whole file
-lineString = file_object.readline()
+#Read contents of file into a list
+line_list = file_object.readlines()
+
+#Close the file since we have a list with whole file now
+file_object.close()
 
 #Pretend we read one line of data from the file
-while lineString:    #This is a boolean that will be True if line has content, False if no content.
-                        # Can also do while len(lineString) > 0: or 
+for lineString in line_list: # instead of using if, can also do line_list[17:] to read only from line 18
+    #Check if line is a data line
     if lineString[0] in ("#", "u"): # if start of line(index 0) has # or u, skip 
-        lineString = file_object.readline()  #??? YOU NEED THIS! read next line
         continue 
    
     #Split the string into a list of data items
@@ -38,7 +39,4 @@ while lineString:    #This is a boolean that will be True if line has content, F
 
     #Print the location of sara
     print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
-
-    #Read next line 
-    lineString = file_object.readline()
 
