@@ -23,7 +23,7 @@ lineString = file_object.readline()
 while lineString:    #This is a boolean that will be True if line has content, False if no content.
                         # Can also do while len(lineString) > 0: or 
     if lineString[0] in ("#", "u"): # if start of line(index 0) has # or u, skip 
-        lineString = file_object.readline()  #??? YOU NEED THIS! read next line
+        lineString = file_object.readline()  # need to read next line before 'continue' so it changes the line we are reading. if this line no exist lineString never changes
         continue 
    
     #Split the string into a list of data items
