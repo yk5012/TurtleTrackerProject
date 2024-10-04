@@ -9,6 +9,9 @@
 # Date:   Fall 2024
 #--------------------------------------------------------------
  
+#Ask user for a date 
+user_date = '7/3/2003' #input("Enter a date(mm/dd/yyyy): ")
+
 #Create a variable pointing to the data file path relative to this file 
 file_name = './data/raw/sara.txt' # . indicates start from current python file
 
@@ -49,6 +52,34 @@ for lineString in line_list: # instead of using if, can also do line_list[17:] t
         date_dict[record_id] = obs_date #adding each line's unique record id to dict
         location_dict[record_id] = (obs_lat, obs_lon)
 
-    #Print the location of sara
-   # print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
+#Initialize empty list for keys
+keys = []
+
+#Loop through items in date_dict to see if it matches input list 
+
+    #For each item in the date_dict that i am calling 'item', the key is the first thing and value is the second thing
+    #(we took a look and saw that each item is (unique id, date)
+    #if value == user_date, print that key 
+    #So this prints all unique ids for a specified user_date 
+
+for item in date_dict.items(): #date_dict.items() pulls up all items(key and value pairs) in date_dict
+    key = item[0]
+    value = item[1]
+    if value == user_date:
+        keys.append(key) #append selected key to the empty 'keys' list we created
+
+    #Since this is a tupule we can also do:
+    #for key, value in date_dict.items():
+        #if value == user_date:
+            #print(key)
+
+#Loop through keys and report location 
+for key in keys:
+    location = location_dict[key]
+    lat = location[0]
+    long = location[1]
+    print(f"On the date {user_date}, Sara the turtle was seen at {lat}d lat, {long}d long.")
+
+
+
 
