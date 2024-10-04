@@ -41,9 +41,13 @@ for lineString in line_list: # instead of using if, can also do line_list[17:] t
     obs_lat = lineData[6]
     obs_lon = lineData[7] 
 
-    #Add items to dictionary 
-    date_dict[record_id] = obs_date #adding each line's unique record id to dict
-    location_dict[record_id] = (obs_lat, obs_lon)
+    #Determine if location criterion is met
+    #If observation class is either 1, 2, or 3, will add to dictionaries. 
+    #no.s need to be string not int bc they are read in string 
+    if obs_lc in ("1", "2", "3"): #else: skip. 
+        #Add items to dictionary 
+        date_dict[record_id] = obs_date #adding each line's unique record id to dict
+        location_dict[record_id] = (obs_lat, obs_lon)
 
     #Print the location of sara
    # print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
