@@ -10,7 +10,7 @@
 #--------------------------------------------------------------
  
 #Ask user for a date 
-user_date = '7/3/2003' #input("Enter a date(mm/dd/yyyy): ")
+user_date = input("Enter a date(mm/dd/yyyy): ")
 
 #Create a variable pointing to the data file path relative to this file 
 file_name = './data/raw/sara.txt' # . indicates start from current python file
@@ -72,6 +72,10 @@ for item in date_dict.items(): #date_dict.items() pulls up all items(key and val
     #for key, value in date_dict.items():
         #if value == user_date:
             #print(key)
+
+#Report if no records were found(if keys collection is empty)
+if len(keys) == 0:
+    print(f"No records were found on {user_date}")
 
 #Loop through keys and report location 
 for key in keys:
